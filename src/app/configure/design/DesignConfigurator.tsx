@@ -12,11 +12,14 @@ import { Label } from "@/components/ui/label";
 import { DropdownMenu, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { DropdownMenuContent, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, CheckIcon, ChevronsDown } from "lucide-react";
+import { ArrowRight, Check, CheckIcon, ChevronsDown, ChevronsUpDown } from "lucide-react";
 import { format } from "path";
 import { BASE_PRICE } from "@/config/products";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/components/ui/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { ConfigProps, saveConfig as _saveConfig } from "./actions";
+import { useRouter } from "next/navigation";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -26,6 +29,24 @@ interface DesignConfiguratorProps {
 
 const DesignConfigurator: FC<DesignConfiguratorProps> = ({ configId, imageUrl, imageDimensions }) => {
   const { toast } = useToast();
+  const router = useRouter();
+  const { mutate: saveConfig } = useMutation({
+    mutationKey: ["save-config"],
+    mutationFn: async (args: ConfigProps) => {
+      await Promise.all([saveConfiguration(), _saveConfig(args)]);
+    },
+    onError: () => {
+      toast({
+        title: "something went wrong",
+        description: "There was an error on our end. Please try again.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      router.push(`/configure/preview?id=${configId}`);
+    },
+  });
+
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number];
     model: (typeof MODELS.options)[number];
@@ -179,23 +200,23 @@ const DesignConfigurator: FC<DesignConfiguratorProps> = ({ configId, imageUrl, i
                   <Label>Model</Label>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant='outline' role='combobox' className='w-full justify-center'>
+                      <Button variant='outline' role='radio' className='w-full justify-between'>
                         {options.model.label}
-                        <ChevronsDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                        <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className='z-50 bg-zinc-50'>
                       {MODELS.options.map((model) => (
                         <DropdownMenuItem
                           key={model.label}
-                          onClick={() => {
-                            setOptions((prev) => ({ ...prev, model }));
-                          }}
                           className={cn("flex text-sm gap-1 items-center p-1.5 cursor-default hover:bg-zinc-100", {
                             "bg-zinc-100": model.label === options.model.label,
                           })}
+                          onClick={() => {
+                            setOptions((prev) => ({ ...prev, model }));
+                          }}
                         >
-                          <Check className={cn("mr-2 w-4 h-4 ", model.label === options.model.label ? "opacity-100" : "opacity-0")} />
+                          <Check className={cn("mr-2 h-4 w-4", model.label === options.model.label ? "opacity-100" : "opacity-0")} />
                           {model.label}
                         </DropdownMenuItem>
                       ))}
@@ -256,7 +277,19 @@ const DesignConfigurator: FC<DesignConfiguratorProps> = ({ configId, imageUrl, i
           <div className='w-full h-full flex justify-end items-center'>
             <div className='w-full flex gap-6 items-center'>
               <p className='font-medium whitespace-nowrap'>{formatPrice((BASE_PRICE + options.finish.price + options.material.price) / 100)}</p>
-              <Button size='sm' className='w-full' onClick={saveConfiguration}>
+              <Button
+                size='sm'
+                className='w-full'
+                onClick={() =>
+                  saveConfig({
+                    configId,
+                    color: options.color.value,
+                    finish: options.finish.value,
+                    material: options.material.value,
+                    model: options.model.value,
+                  })
+                }
+              >
                 Continue <ArrowRight className='h-4 w-4 ml-1.5 inline' />
               </Button>
             </div>

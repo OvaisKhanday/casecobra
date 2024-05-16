@@ -17,7 +17,7 @@ const Phone: FC<PhoneProps> = ({ imgSrc, dark = false, className, ...props }) =>
         className='pointer-events-none z-50 select-none'
       />
       <div className='absolute -z-10 inset-0'>
-        <img src={imgSrc} alt='overlay phone image' className='object-cover' />
+        <img src={imgSrc} alt='overlay phone image' className='object-cover min-w-full min-h-full' />
       </div>
     </div>
   );
