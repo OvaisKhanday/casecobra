@@ -1,5 +1,7 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { z } from "zod";
+import sharp from "sharp";
+import { db } from "@/db";
 
 const f = createUploadthing();
 
@@ -13,13 +15,35 @@ export const ourFileRouter = {
       return { input };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      // This code RUNS ON YOUR SERVER after upload
-
-      console.log("file", file);
-      console.log("metadata", metadata);
       const { configId } = metadata.input;
-      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { configId };
+      console.log("file", file);
+
+      const res = await fetch(file.url);
+      const buffer = await res.arrayBuffer(); // convert to buffer
+      const imgMetadata = await sharp(buffer).metadata();
+      const { width, height } = imgMetadata;
+
+      if (!configId) {
+        const configuration = await db.configuration.create({
+          data: {
+            imageUrl: file.url,
+            width: width || 500,
+            height: height || 500,
+          },
+        });
+        return { configId: configuration.id };
+      } else {
+        const updatedConfiguration = await db.configuration.update({
+          where: {
+            id: configId,
+          },
+          data: {
+            croppedImageUrl: file.url,
+          },
+        });
+        return { configId: updatedConfiguration.id };
+      }
+      //  Whatever is returned here is sent to the client-side `onClientUploadComplete` callback
     }),
 } satisfies FileRouter;
 

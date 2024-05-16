@@ -19,9 +19,8 @@ const Page: FC<pageProps> = ({}) => {
   const router = useRouter();
 
   const { startUpload, isUploading } = useUploadThing("imageUploader", {
-    onClientUploadComplete(configId) {
-      console.log("data after upload", configId);
-      // const configId = data.serverData.configId;
+    onClientUploadComplete([data]) {
+      const configId = data.serverData.configId;
       startTransition(() => {
         router.push(`/configure/design?id=${configId}`);
       });
