@@ -7,6 +7,23 @@
 Capture your favorite memories with your own, one-of-one phone case. **casecobra** allows you to protect your memories, not just your phone-case.
 
 ![Home screen of the web-app](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-1.png)
+
+## Features
+
+- 🛠️ Complete shop built from scratch in Next.js 14
+- 💻 Beautiful landing page included
+- 🎨 Custom artworks made by a professional illustrator
+- 💳 Secret admin dashboard to manage orders
+- 🖥️ Drag-and-drop file uploads
+- 🛍️ Customers can purchase directly from you
+- 🌟 Clean, modern UI on top of shadcn-ui
+- 🛒 Completely custom phone case configurator
+- 🔑 Authentication using Kinde
+- ✉️ Beautiful thank-you email after purchase
+- ✅ Apple-inspired configuration design
+- ⌨️ 100% written in TypeScript
+- 🎁 ...much more
+  
 ![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-2.png)
 ![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-3.png)
 
