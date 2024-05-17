@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
+import ThankYou from "./ThankYou";
 
-interface pageProps {
-  searchParams: {
-    [key: string]: string; // orderId
-  };
-}
+interface pageProps {}
 
-const page: FC<pageProps> = ({ searchParams }) => {
-  const { orderId } = searchParams;
-  return <div>{orderId}</div>;
+const page: FC<pageProps> = ({}) => {
+  return (
+    <Suspense>
+      <ThankYou />
+    </Suspense>
+  );
 };
 
 export default page;

@@ -25,7 +25,7 @@ const NavBar: FC<NavBarProps> = async ({}) => {
                   Sign out
                 </Link>
                 {isAdmin ? (
-                  <Link href='/api/auth/logout' className={buttonVariants({ variant: "ghost", size: "sm" })}>
+                  <Link href='/dashboard' className={buttonVariants({ variant: "ghost", size: "sm" })}>
                     Dashboard ✨
                   </Link>
                 ) : null}
