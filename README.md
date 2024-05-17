@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome to case*cobra*
 
-## Getting Started
+## checkout at: <https://casecobra-mu.vercel.app/>
 
-First, run the development server:
+### Your Image on a _Custom Phone_ case
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Capture your favorite memories with your own, one-of-one phone case. **casecobra** allows you to protect your memories, not just your phone-case.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Home screen of the web-app](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-1.png)
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-2.png)
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-3.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Steps
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Step 1: Upload an image (also: Drag and Drop)
 
-## Learn More
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/upload-1.png)
 
-To learn more about Next.js, take a look at the following resources:
+### Step 2: Customize your case
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/design-1.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Step 3: Preview and Payment
 
-## Deploy on Vercel
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/preview-1.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### 3.1 In this process, if you have come here for the first time, the configuration of your phone case is not lost when you go for login/sign-up. Your configuration will be intact once you login
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/preview-popup-1.png)
+
+#### 3.2 Authentication provided by email-OTP or Google
+
+![Login](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/auth-login-1.png)
+
+#### 3.3 Payment (Stripe)
+
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/payment-1.png)
+
+## Once the payment is done, you will be redirected to the summary page and a confirmation email will be sent to the registered email
+
+![Summary](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/summary-1.png)
+
+### Email
+
+![email](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/email-1.png)
+
+## Admin Dashboard
+
+Admin can get the details of all the orders made by customers. He can analyze this information regarding the growth of the business. Can change the order status as well.
+![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/dashboard-1.png)
+
+### The web-app is fully responsive on the mobile devices as well
+
+![Phone-View](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/phone-collage-1.png)
+
+## Checkout at: <https://casecobra-mu.vercel.app/>
