@@ -37,7 +37,7 @@ const DesignPreview: FC<DesignPreviewProps> = ({ configuration }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   useEffect(() => setShowConfetti(true), []);
 
-  const { mutate: createPaymentSession } = useMutation({
+  const { mutate: createPaymentSession, isPending } = useMutation({
     mutationKey: ["get-checkout-session"],
     mutationFn: createCheckoutSession,
     onSuccess: ({ url }) => {
@@ -73,12 +73,12 @@ const DesignPreview: FC<DesignPreviewProps> = ({ configuration }) => {
       {/* Login Modal */}
       <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen} />
 
-      <div className='mt-20 grid grid-cols-1 text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12'>
-        <div className='sm:col-span-4 md:col-span-3 md:row-span-2 md:row-end-2'>
-          <Phone className={cn(`bg-${caseTwColor}`)} imgSrc={croppedImageUrl!} />
+      <div className='mt-20 flex flex-col items-center md:grid text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12'>
+        <div className=' md:col-span-4 lg:col-span-3 md:row-span-2 md:row-end-2'>
+          <Phone className={cn(`bg-${caseTwColor}`, "max-w-[150px] md:max-w-full")} imgSrc={croppedImageUrl!} />
         </div>
 
-        <div className='mt-6 sm:col-span-9 sm:mt-0 md:row-end-1'>
+        <div className='mt-6 sm:col-span-9 md:row-end-1'>
           <h3 className='text-3xl font-bold tracking-tighter text-gray-900'>Your {modelLabel} Case</h3>
           <div className='mt-3 flex items-center gap-1.5 text-base'>
             <Check className='h-4 w-4 text-green-500' />
@@ -135,7 +135,7 @@ const DesignPreview: FC<DesignPreviewProps> = ({ configuration }) => {
             </div>
 
             <div className='mt-8 flex justify-end pb-12'>
-              <Button onClick={handleCheckout} className='px-4 sm:px-6 lg:px-8'>
+              <Button isLoading={isPending} disabled={isPending} loadingText='Payment' onClick={handleCheckout} className='px-4 sm:px-6 lg:px-8'>
                 Checkout <ArrowRight className='h-4 w-4 ml-1.5' />{" "}
               </Button>
             </div>
