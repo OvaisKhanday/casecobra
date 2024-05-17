@@ -28,7 +28,7 @@ const DesignPreview: FC<DesignPreviewProps> = ({ configuration }) => {
 
   const caseTwColor = COLORS.find((supportedColor) => supportedColor.value === color)?.tw;
 
-  const { label: modelLabel } = MODELS.options.find(({ value }) => value === model);
+  const { label: modelLabel } = MODELS.options.find(({ value }) => value === model)!;
 
   let totalPrice = BASE_PRICE;
   if (material === "polycarbonate") totalPrice += PRODUCTS_PRICES.materials.polycarbonate;
