@@ -1,4 +1,4 @@
-# Welcome to case*cobra*
+# Welcome to case*cobra* - A Modern Fullstack E-Commerce Shop for Custom Phone Cases
 
 ## checkout at: <https://casecobra-mu.vercel.app/>
 
@@ -23,6 +23,15 @@ Capture your favorite memories with your own, one-of-one phone case. **casecobra
 - ✅ Apple-inspired configuration design
 - ⌨️ 100% written in TypeScript
 - 🎁 ...much more
+
+## Built using
+
+- Next.js 14
+- Postgres
+- TypeScript - Full type safety
+- Tailwind
+- Kinde Auth
+- UploadThing as a service for file hosting
   
 ![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-2.png)
 ![enter image description here](https://raw.githubusercontent.com/OvaisKhanday/Markdowns/main/casecobra/hero-3.png)
